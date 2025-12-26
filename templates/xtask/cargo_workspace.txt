@@ -1,0 +1,6 @@
+[workspace]
+members = [
+    "%%PROJECT_NAME_UNDERSCORED%%",
+    "xtask",
+]
+resolver = "3"

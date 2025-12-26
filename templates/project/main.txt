@@ -1,0 +1,6 @@
+use nih_plug::prelude::*;
+use %%PROJECT_NAME_UNDERSCORED%%::%%PROJECT_NAME_CAMELCASE%%;
+
+fn main() {
+    nih_export_standalone::<%%PROJECT_NAME_CAMELCASE%%>();
+}

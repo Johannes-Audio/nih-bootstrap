@@ -1,0 +1,13 @@
+[package]
+name = "%%PROJECT_NAME%%"
+version = "%%CARGO_PACKAGE_VERSION%%"
+edition = "2024"
+authors = ["%%AUTHORS%%"]
+description = "%%PROJECT_DESCRIPTION%%"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[dependencies]
+nih_plug = { git = "%%NIH_PLUG_GIT%%", features = ["assert_process_allocs", "standalone"] }
+nih_plug_iced = { git = "%%NIH_PLUG_GIT%%" }

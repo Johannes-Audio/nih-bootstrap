@@ -1,0 +1,56 @@
+use std::sync::Arc;
+
+use nih_plug::{
+    editor::Editor,
+    prelude::GuiContext,
+};
+use nih_plug_iced::{
+    Command, Element, IcedEditor, IcedState, WindowQueue,
+    executor, widgets as nih_widgets,
+};
+
+use crate::%%PROJECT_NAME_CAMELCASE%%Params;
+
+const WINDOW_HEIGHT: u32;
+const WINDOW_WIDTH: u32;
+
+pub(crate) fn default_state() -> Arc<IcedState> {
+    IcedState::from_size(WINDOW_WIDTH, WINDOW_HEIGHT)
+}
+
+// call create_iced_editor or create_egui_editor in this function
+pub(crate) fn create() -> Option<Box<dyn Editor>> {}
+
+struct %%PROJECT_NAME_CAMELCASE%%Editor {}
+
+#[derive(Debug, Clone, Copy)]
+enum Message {
+    ParamUpdate(nih_widgets::ParamMessage),
+}
+
+impl IcedEditor for %%PROJECT_NAME_CAMELCASE%%Editor {
+    type Executor = executor::Default;
+    type Message = Message;
+    type InitializationFlags = (Arc<%%PROJECT_NAME_CAMELCASE%%Params>, Arc<AtomicF32>);
+
+    fn new(
+        (params, peak_meter): Self::InitializationFlags,
+        context: Arc<dyn GuiContext>,
+    ) -> (Self, Command<Self::Message>) {}
+
+    fn context(&self) -> &dyn GuiContext {
+        self.context.as_ref()
+    }
+
+    fn update(
+        &mut self,
+        _window: &mut WindowQueue,
+        message: Self::Message,
+    ) -> Command<Self::Message> {
+        Command::none()
+    }
+
+    fn view(&mut self) -> Element<'_, Self::Message> {}
+
+    fn background_color(&self) -> nih_plug_iced::Color {}
+}

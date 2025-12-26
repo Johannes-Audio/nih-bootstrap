@@ -1,0 +1,12 @@
+# build artifacts
+/target/
+**/*.rs.bk
+
+# vendor data
+/data
+
+# VST bundle outputs
+/bundled/
+
+# project files
+Cargo.lock

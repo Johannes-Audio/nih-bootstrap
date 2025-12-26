@@ -1,0 +1,79 @@
+use std::sync::Arc;
+
+use nih_plug::audio_setup::{AudioIOLayout, AuxiliaryBuffers, BufferConfig};
+use nih_plug::buffer::Buffer;
+use nih_plug::context::{gui::AsyncExecutor, init::InitContext, process::ProcessContext};
+use nih_plug::editor::Editor;
+use nih_plug::midi::MidiConfig;
+use nih_plug::params::Params;
+use nih_plug::plugin::{Plugin, ProcessStatus, vst3::Vst3Plugin};
+use nih_plug::wrapper::vst3::subcategories::Vst3SubCategory;
+use nih_plug::nih_export_vst3;
+
+mod editor;
+
+/// The plugin struct
+pub struct %%PROJECT_NAME_CAMELCASE%% {}
+
+/// The parameters of the plugin
+#[derive(Params)]
+struct %%PROJECT_NAME_CAMELCASE%%Params {}
+
+impl Default for %%PROJECT_NAME_CAMELCASE%% {}
+
+impl Default for %%PROJECT_NAME_CAMELCASE%%Params {}
+
+impl Plugin for %%PROJECT_NAME_CAMELCASE%% {
+    const NAME: &'static str = "%%PROJECT_NAME%%";
+    const VENDOR: &'static str = "%%VENDOR%%";
+    const URL: &'static str = "%%URL%%";
+    const EMAIL: &'static str = "%%EMAIL%%";
+    const VERSION: &'static str = env!("CARGO_PKG_VERSION");
+    const AUDIO_IO_LAYOUTS: &'static [AudioIOLayout] = &[];
+
+    type SysExMessage = ();
+    type BackgroundTask = ();
+
+    fn params(&self) -> Arc<dyn Params> {
+        self.params.clone()
+    }
+
+    fn editor(&mut self, _async_executor: AsyncExecutor<Self>) -> Option<Box<dyn Editor>> {
+        // call editor::create() to create the editor instance
+        editor::create()
+    }
+
+    fn initialize(
+        &mut self,
+        _audio_io_layout: &AudioIOLayout,
+        buffer_config: &BufferConfig,
+        _context: &mut impl InitContext<Self>,
+    ) -> bool {
+        // do initialization here
+
+        true
+    }
+
+    fn process(
+        &mut self,
+        buffer: &mut Buffer,
+        _aux: &mut AuxiliaryBuffers,
+        _context: &mut impl ProcessContext<Self>,
+    ) -> ProcessStatus {
+        // do processing of audio data here
+
+        ProcessStatus::Normal
+    }
+
+    const MIDI_INPUT: MidiConfig = MidiConfig::None;
+    const MIDI_OUTPUT: MidiConfig = MidiConfig::None;
+    const SAMPLE_ACCURATE_AUTOMATION: bool = false;
+    const HARD_REALTIME_ONLY: bool = false;
+}
+
+impl Vst3Plugin for %%PROJECT_NAME_CAMELCASE%% {
+    const VST3_CLASS_ID: [u8; 16] = *b""; // how to create unique id???
+    const VST3_SUBCATEGORIES: &'static [Vst3SubCategory] = &[];
+}
+
+nih_export_vst3!(%%PROJECT_NAME_CAMELCASE%%);
