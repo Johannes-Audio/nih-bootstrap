@@ -1,8 +1,5 @@
 # build artifacts
 /target
 
-# vendor and possibly confidential data
-/data
-
 # cargo files
 Cargo.lock

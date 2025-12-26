@@ -6,7 +6,6 @@ mod config;
 mod platform;
 mod templates;
 
-
 #[derive(Parser)]
 #[command(name = "nih-bootstrap")]
 #[command(version, about = "Bootstrapper for NIH-plugin development on mac, windows and linux.", long_about = None)]

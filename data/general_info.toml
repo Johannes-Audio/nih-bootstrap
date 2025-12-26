@@ -1,0 +1,6 @@
+authors = ""
+cargo_pkg_version = "0.1.0"
+vendor=""
+vendor_url=""
+vendor_email=""
+nih_plug_git="https://github.com/robbert-vdh/nih-plug.git"
