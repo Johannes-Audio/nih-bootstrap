@@ -11,6 +11,12 @@ While in that directory, install locally with:
 
 `cargo install --path .`
 
+## Build
+
+To build the plugin / app, move to directory created with nih-bootstrap. Then run:
+
+`cargo xtask bundle <PROJECT-NAME> --release`
+
 ## Uninstall
 To uninstall the bootstrapper, run:
 
